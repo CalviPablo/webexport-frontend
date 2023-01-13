@@ -24,6 +24,18 @@ export default function Users() {
     setCurrentPage(i);
   };
 
+  const nextPage = () => {
+    if (currentPage + 1 <= totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage - 1 >= 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   // Funcion para borrar usuarios y actualizar el estado.
   const deleteUser = (id) => {
     axios.delete(`${URL_BACKEND}/users/${id}`).then(() => {
@@ -83,7 +95,9 @@ export default function Users() {
         <nav aria-label="Page navigation example">
           <ul className="pagination">
             <li className="page-item">
-              <button className="page-link">Previous</button>
+              <button className="page-link" onClick={() => prevPage()}>
+                Previous
+              </button>
             </li>
             {Array.from({ length: totalPages }, (_, i) => {
               return (
@@ -98,7 +112,9 @@ export default function Users() {
               );
             })}
             <li className="page-item">
-              <button className="page-link">Next</button>
+              <button className="page-link" onClick={() => nextPage()}>
+                Next
+              </button>
             </li>
           </ul>
         </nav>

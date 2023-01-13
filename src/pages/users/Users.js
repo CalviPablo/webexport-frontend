@@ -5,14 +5,24 @@ import { URL_BACKEND } from "../../config";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
+  const [totalPages, setTotalPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState([1]);
 
   // Devuelve los usuarios desde la api.
   useEffect(() => {
-    axios.get(`${URL_BACKEND}/users`).then((res) => {
+    axios.get(`${URL_BACKEND}/users?page=${currentPage}`).then((res) => {
+      setUsers(res.data.data);
+      setTotalPages(res.data.last_page);
+      // console.log(totalPages);
+      // console.log(users);
       // console.log(res.data);
-      setUsers(res.data);
     });
-  }, []);
+  }, [currentPage]);
+
+  // Cambiar pagina de la lista y usuarios
+  const changePage = (i) => {
+    setCurrentPage(i);
+  };
 
   // Funcion para borrar usuarios y actualizar el estado.
   const deleteUser = (id) => {
@@ -70,6 +80,28 @@ export default function Users() {
             })}
           </tbody>
         </table>
+        <nav aria-label="Page navigation example">
+          <ul className="pagination">
+            <li className="page-item">
+              <button className="page-link">Previous</button>
+            </li>
+            {Array.from({ length: totalPages }, (_, i) => {
+              return (
+                <li key={i} className="page-item">
+                  <button
+                    className="page-link"
+                    onClick={() => changePage(i + 1)}
+                  >
+                    {i + 1}
+                  </button>
+                </li>
+              );
+            })}
+            <li className="page-item">
+              <button className="page-link">Next</button>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import UserList from "./components/users/Users";
-import CreateUser from "./components/users/Create";
-import EditUser from "./components/users/Edit";
-import Roles from "./components/roles/Roles";
-import CreateRole from "./components/roles/Create";
-import EditRole from "./components/roles/Edit";
+import UserList from "./pages/users/Users";
+import CreateUser from "./pages/users/Create";
+import EditUser from "./pages/users/Edit";
+import Roles from "./pages/roles/Roles";
+import CreateRole from "./pages/roles/Create";
+import EditRole from "./pages/roles/Edit";
 
 function App() {
   return (

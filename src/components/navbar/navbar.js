@@ -6,7 +6,7 @@ export default function Navbar() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
-          <a className="navbar-brand mx-auto" href="/">
+          <a className="navbar-brand" href="/">
             CRUD
           </a>
           <button

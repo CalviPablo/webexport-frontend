@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-import "./css/bootstrap.min.css";
+// import "./css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/navbar/navbar";
 import { BrowserRouter } from "react-router-dom";
 
